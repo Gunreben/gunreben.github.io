@@ -81,13 +81,74 @@
       </ul>
     </section>
   
-    <!-- Demo Workflow -->
-    <section id="demo">
-      <h2 style="text-align:center;">How It Works</h2>
-      <p style="text-align:center; max-width:40ch; margin:0 auto;">
-        Dictate → Transcribe (Whisper) → Generate (LLM) → Download Letter
-      </p>
-    </section>
+<!-- Demo Workflow -->
+<section id="demo">
+    <h2 class="center">How It Works</h2>
+    <div class="workflow">
+      <div class="step">
+        <img src="assets/img/workflow/1_recording.png" alt="Recording" class="workflow-icon">
+        <span>Doctor Records Audio</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <img src="assets/img/workflow/2_sst.png" alt="Transcription" class="workflow-icon">
+        <span>Transcribe (Whisper)</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <img src="assets/img/workflow/3_local_llm.png" alt="LLM Processing" class="workflow-icon">
+        <span>Generate (LLM Pipeline)</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <img src="assets/img/workflow/4_fetch_data.png" alt="Fetch Data" class="workflow-icon">
+        <span>Fetch Data<br/>from Praxis</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <img src="assets/img/workflow/5_final_letter.png" alt="Final Letter" class="workflow-icon">
+        <span>Download Letter</span>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    #demo { padding: 2rem; }
+    #demo .center { text-align: center; margin-bottom: 1.5rem; }
+    .workflow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 120px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .workflow-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 0.5rem;
+    }
+    .arrow {
+      font-size: 1.5rem;
+      margin: 0 0.25rem;
+    }
+  </style>
+  
+  <!-- include Font Awesome CDN in your <head> (or swap for your preferred icon set) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pc6zKldI3etU5SixSGowvvPRBlzr3z5t4DPhwDjjc941A6S16Oy2UV6JEOihAZBK1YtRZo7mTQG2DZT+Xewx0A=="
+    crossorigin="anonymous"
+  />
+  
   
     <!-- Contact -->
     <section id="contact" style="text-align:center;">
