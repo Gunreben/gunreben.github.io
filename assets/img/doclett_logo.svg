@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="120" viewBox="0 0 400 120">
-  <path d="M10 10 H70 L90 30 V100 H10 Z" fill="none" stroke="#14B8A6" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-  <rect x="40" y="55" width="20" height="10" fill="#14B8A6"/>
-  <rect x="45" y="50" width="10" height="20" fill="#14B8A6"/>
-  <text x="120" y="75" font-family="Space Grotesk, sans-serif" font-size="60" font-weight="600" fill="#14B8A6">DocLett</text>
-</svg>
