@@ -193,4 +193,39 @@ header, section {
   .tooltip-text {
     width: 200px;
   }
+}
+
+/* Partners Section */
+.partners {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.partner-card {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.partner-card h3 {
+  color: #2d3436;
+  margin-bottom: 1rem;
+}
+
+.partner-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #0984e3;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.partner-button:hover {
+  background-color: #0873c4;
 } 
