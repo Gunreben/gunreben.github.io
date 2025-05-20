@@ -72,7 +72,7 @@ h2 {
 /* Hero section */
 .hero {
   text-align: center; 
-  background: url('../img/hero-bg.jpg') center/cover;
+  background: url('../img/hero_bg.png') center/cover;
   padding: 3rem 1rem 5rem;
 }
 
@@ -130,7 +130,7 @@ h2 {
 .partners {
   padding: 4rem 2rem;
   text-align: center;
-  background-color: var(--color-mint);
+  background-color: var(--color-mint-light);
 }
 
 .partner-card {
@@ -192,7 +192,7 @@ h2 {
 /* Demo workflow section */
 #demo { 
   padding: 3rem 1.5rem;
-  background-color: var(--color-mint);
+  background-color: var(--color-mint-light);
 }
 
 #demo .center { 
@@ -220,7 +220,7 @@ h2 {
 }
 
 .stage {
-  background: var(--color-mint-light);
+  background: var(--color-white);
   border-radius: var(--border-radius);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
