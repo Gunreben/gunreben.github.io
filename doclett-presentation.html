@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocLett - GITEX Presentation</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon.png">
+  
+  <style>
+    :root {
+      --color-primary: #14B8A6;
+      --color-primary-dark: #0F9B8A;
+      --color-midnight: #0F172A;
+      --color-slate: #334155;
+      --color-mint: #CCFBF1;
+      --color-mint-light: #E0FDFA;
+      --color-white: #ffffff;
+      --border-radius: 0.5rem;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
+      --slide-timing: 5000ms;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--color-white);
+      color: var(--color-slate);
+      overflow: hidden;
+    }
+    
+    .presentation {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5%;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 1;
+      background-color: var(--color-white);
+    }
+    
+    .slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    
+    /* Slide 1 - Logo and Tagline */
+    .slide-1 {
+      background-color: var(--color-mint-light);
+    }
+    
+    .logo {
+      width: 60%;
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
+    
+    .tagline {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      color: var(--color-midnight);
+    }
+    
+    .subtagline {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      color: var(--color-slate);
+    }
+    
+    /* Slide 2 - Doctor with Paperwork */
+    .slide-2 {
+      background-color: var(--color-white);
+      justify-content: flex-start;
+    }
+    
+    .paperwork-container {
+      position: relative;
+      width: 100%;
+      height: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .paperwork-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .time-bubble {
+      position: absolute;
+      top: 30%;
+      right: 15%;
+      background-color: #ff3b30;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1.5rem;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: scale(0);
+      animation: popIn 1s forwards;
+      animation-delay: 1s;
+    }
+    
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      70% {
+        transform: scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .admin-text {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-top: 20px;
+      color: var(--color-midnight);
+    }
+    
+    /* Slide 3 - Workflow Strip */
+    .slide-3 {
+      background-color: var(--color-mint-light);
+    }
+    
+    .workflow-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      max-width: 1000px;
+    }
+    
+    .workflow-icon {
+      width: 15%;
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    
+    .workflow-arrow {
+      font-size: 2rem;
+      color: var(--color-primary);
+      opacity: 0;
+    }
+    
+    .slide-3.active .workflow-icon,
+    .slide-3.active .workflow-arrow {
+      animation: slideInFromLeft 0.5s forwards;
+    }
+    
+    .slide-3.active .workflow-icon:nth-child(1) { animation-delay: 0.2s; }
+    .slide-3.active .workflow-arrow:nth-child(2) { animation-delay: 0.4s; }
+    .slide-3.active .workflow-icon:nth-child(3) { animation-delay: 0.6s; }
+    .slide-3.active .workflow-arrow:nth-child(4) { animation-delay: 0.8s; }
+    .slide-3.active .workflow-icon:nth-child(5) { animation-delay: 1s; }
+    .slide-3.active .workflow-arrow:nth-child(6) { animation-delay: 1.2s; }
+    .slide-3.active .workflow-icon:nth-child(7) { animation-delay: 1.4s; }
+    .slide-3.active .workflow-arrow:nth-child(8) { animation-delay: 1.6s; }
+    .slide-3.active .workflow-icon:nth-child(9) { animation-delay: 1.8s; }
+    
+    @keyframes slideInFromLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .workflow-text {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-top: 50px;
+      color: var(--color-midnight);
+    }
+    
+    /* Slide 4 - Stats */
+    .slide-4 {
+      background-color: var(--color-white);
+    }
+    
+    .mini-workflow {
+      width: 80%;
+      max-width: 800px;
+      margin-bottom: 50px;
+    }
+    
+    .mini-workflow .workflow-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .mini-workflow .workflow-icon {
+      width: 50px;
+      height: 50px;
+      opacity: 1;
+      transform: none;
+    }
+    
+    .mini-workflow .workflow-arrow {
+      font-size: 1.5rem;
+      opacity: 1;
+      transform: none;
+    }
+    
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      width: 90%;
+      max-width: 1000px;
+    }
+    
+    .stat {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      opacity: 0;
+      transform: translateY(30px);
+      text-align: center;
+      width: 30%;
+    }
+    
+    .slide-4.active .stat {
+      animation: popUp 0.7s forwards;
+    }
+    
+    .slide-4.active .stat:nth-child(1) { animation-delay: 0.5s; }
+    .slide-4.active .stat:nth-child(2) { animation-delay: 1.5s; }
+    .slide-4.active .stat:nth-child(3) { animation-delay: 2.5s; }
+    
+    @keyframes popUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Slide 5 - QR and Contact */
+    .slide-5 {
+      background-color: var(--color-mint-light);
+    }
+    
+    .qr-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 90%;
+      max-width: 800px;
+    }
+    
+    .qr-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 20px;
+    }
+    
+    .qr-code {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+      background-color: white;
+      padding: 10px;
+    }
+    
+    .contact-text {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: var(--color-midnight);
+    }
+    
+    .cta {
+      display: inline-block;
+      padding: 15px 40px;
+      background-color: var(--color-primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+    
+    .cta:hover {
+      background-color: var(--color-primary-dark);
+    }
+    
+    /* Home button */
+    .home-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      padding: 10px 20px;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      opacity: 0.7;
+      transition: var(--transition);
+    }
+    
+    .home-button:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+    
+    /* Exit button */
+    .exit-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      background-color: rgba(20, 184, 166, 0.2);
+      color: var(--color-midnight);
+      padding: 10px 20px;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      opacity: 0.7;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    
+    .exit-button:hover {
+      opacity: 1;
+      background-color: rgba(20, 184, 166, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <a href="index.html" class="home-button">Back to Home</a>
+  <div class="exit-button" id="exitButton">Exit Presentation</div>
+  
+  <div class="presentation">
+    <!-- Slide 1: Logo and Tagline -->
+    <div class="slide slide-1 active">
+      <img src="assets/img/logo.png" alt="DocLett Logo" class="logo">
+      <div class="tagline">Secure medical letters, generated locally.</div>
+      <div class="subtagline">GDPR-compliant AI on your own hardware.</div>
+    </div>
+    
+    <!-- Slide 2: Doctor with Paperwork -->
+    <div class="slide slide-2">
+      <div class="paperwork-container">
+        <img src="assets/img/doctor_drowning_in_work.png" alt="Doctor overwhelmed with paperwork" class="paperwork-image">
+        <div class="time-bubble">+23 min/pt</div>
+      </div>
+      <div class="admin-text">Clinical admin steals hours.</div>
+      <div class="subtagline">Doctors type <strong>23 minutes</strong> of notes per patient, every day.</div>
+    </div>
+    
+    <!-- Slide 3: Workflow Strip -->
+    <div class="slide slide-3">
+      <div class="workflow-container">
+        <img src="assets/img/workflow/1_recording.png" alt="Recording" class="workflow-icon">
+        <div class="workflow-arrow">→</div>
+        <img src="assets/img/workflow/2_sst.png" alt="Transcription" class="workflow-icon">
+        <div class="workflow-arrow">→</div>
+        <img src="assets/img/workflow/3_local_llm.png" alt="LLM Processing" class="workflow-icon">
+        <div class="workflow-arrow">→</div>
+        <img src="assets/img/workflow/4_fetch_data.png" alt="Patient Data" class="workflow-icon">
+        <div class="workflow-arrow">→</div>
+        <img src="assets/img/workflow/5_final_letter.png" alt="Final Letter" class="workflow-icon">
+      </div>
+      <div class="workflow-text">Dictate → Letter in seconds</div>
+    </div>
+    
+    <!-- Slide 4: Stats -->
+    <div class="slide slide-4">
+      <div class="mini-workflow">
+        <!-- Shrunken version of workflow strip -->
+        <div class="workflow-container">
+          <img src="assets/img/workflow/1_recording.png" alt="Recording" class="workflow-icon">
+          <div class="workflow-arrow">→</div>
+          <img src="assets/img/workflow/2_sst.png" alt="Transcription" class="workflow-icon">
+          <div class="workflow-arrow">→</div>
+          <img src="assets/img/workflow/3_local_llm.png" alt="LLM Processing" class="workflow-icon">
+          <div class="workflow-arrow">→</div>
+          <img src="assets/img/workflow/4_fetch_data.png" alt="Patient Data" class="workflow-icon">
+          <div class="workflow-arrow">→</div>
+          <img src="assets/img/workflow/5_final_letter.png" alt="Final Letter" class="workflow-icon">
+        </div>
+      </div>
+      <div class="stats-container">
+        <div class="stat">-90%<br>typing</div>
+        <div class="stat">0 bytes<br>leave the practice</div>
+        <div class="stat">100%<br>tailored to your workflow</div>
+      </div>
+    </div>
+    
+    <!-- Slide 5: QR and Contact -->
+    <div class="slide slide-5">
+      <div class="contact-text">Get in touch</div>
+      <div class="qr-container">
+        <div class="qr-box">
+          <img src="assets/img/doclett-qr-code.png" alt="Website QR Code" class="qr-code">
+          <div>Website</div>
+        </div>
+        <div class="qr-box">
+          <img src="assets/img/linkedin-qr-code.png" alt="Contact QR Code" class="qr-code">
+          <div>LinkedIn</div>
+        </div>
+      </div>
+      <a href="mailto:hello@doclett.com" class="cta">Contact Us</a>
+    </div>
+  </div>
+
+  <script>
+    // Presentation timing control
+    const slides = document.querySelectorAll('.slide');
+    const slideTiming = [5000, 5000, 8000, 7000, 5000]; // Timing for each slide in ms
+    let currentSlide = 0;
+    let slideTimeout;
+    
+    function showSlide(index) {
+      // Hide all slides
+      slides.forEach(slide => slide.classList.remove('active'));
+      
+      // Show the current slide
+      slides[index].classList.add('active');
+      
+      // Schedule the next slide
+      slideTimeout = setTimeout(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }, slideTiming[index]);
+    }
+    
+    // Exit presentation functionality
+    document.getElementById('exitButton').addEventListener('click', function() {
+      clearTimeout(slideTimeout);
+      window.location.href = 'index.html';
+    });
+    
+    // Start the presentation
+    showSlide(0);
+  </script>
+</body>
+</html>
